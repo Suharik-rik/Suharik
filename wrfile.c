@@ -21,5 +21,19 @@ int main() {
 		printf("Не получилось закрыть файл\n");
 		exit(-1);
 	}
+	char resstring[14];
+	if((fd = open("wrfile.txt", O_RDONLY)) < 0){
+		printf("Ошибка при открытии файла на чтение\n");
+		exit(-1);
+	}
+	size = read(fd, resstring, 14);
+	if(size != 14){
+		printf("Не удалось прочитать 14 байт в файл\n");
+		exit(-1);
+	}else printf("прочитанная строка %s\n", resstring);
+	if(close(fd) < 0){
+		printf("Не получилось закрыть файл\n");
+		exit(-1);
+	}
 	return 0;
 }
